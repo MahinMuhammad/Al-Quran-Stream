@@ -6,19 +6,37 @@
 //
 
 import Foundation
+import AVFoundation
 
 final class HomeViewModel:ObservableObject{
     let networkManager = NetworkManager()
     let numberOfSurahToFetch = 10
-    @Published var playing = false
     @Published var surahs:[SurahModel] = []
+    var player = AVPlayer()
+    @Published var playing = false
     
     func loadSurah(){
-        networkManager.fetchData(of: String(surahs.count+1)) { surah, error in
-            if let surah{
-                self.surahs.append(surah)
-                if self.surahs.count < self.numberOfSurahToFetch{self.loadSurah()}
+        networkManager.fetchData { surahs, error in
+            if surahs.count > 0{
+                self.surahs = surahs
             }
+        }
+    }
+    
+    func playPauseButtonPressed(){
+        if player.timeControlStatus == .playing{
+            player.pause()
+        }else{
+            player.play()
+        }
+    }
+    
+    func loadAudio(of number:String){
+        if let url = URL(string: "https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/\(number).mp3"){
+            print("Fetching audio...")
+            player = AVPlayer(url: url)
+            print("Playing audio...")
+            player.play()
         }
     }
 }

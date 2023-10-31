@@ -6,17 +6,18 @@
 //
 
 import Foundation
+import AVFoundation
 
 final class NetworkManager{
     
-    func fetchData(of numberOfSurah:String, completion: @escaping (SurahModel?, Error?)->Void){
+    func fetchData(completion: @escaping ([SurahModel], Error?)->Void){
         let urlString = "https://api.quran.gading.dev/surah/"
-        if let url = URL(string: urlString+numberOfSurah){
+        if let url = URL(string: urlString){
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, response, error in
                 if let error{
                     print("Failed to fetch data with error: \(error.localizedDescription)")
-                    completion(nil,error)
+                    completion([],error)
                 }else{
                     let decoder = JSONDecoder()
                     if let data{
@@ -28,7 +29,7 @@ final class NetworkManager{
                             }
                         }catch{
                             print("Failed to decode data with error: \(error.localizedDescription)")
-                            completion(nil, error)
+                            completion([], error)
                         }
                     }
                 }
@@ -36,4 +37,19 @@ final class NetworkManager{
             task.resume()
         }
     }
+    
+    //I will uncomment when I will let uer to download a surah
+//    func fetchAudio(from urlString:String, completion: @escaping (URL?, Error?)->Void){
+//        if let url = URL(string: urlString){
+//            let session = URLSession(configuration: .default)
+//            let task = session.downloadTask(with: url) { url, response, error in
+//                if let error{
+//                    print("Failed to download audio contents with error: \(error.localizedDescription)")
+//                }else{
+//                    completion(url, error)
+//                }
+//            }
+//            task.resume()
+//        }
+//    }
 }

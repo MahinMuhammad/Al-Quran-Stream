@@ -9,14 +9,21 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
+    @State var selected:Int?
     var body: some View {
         NavigationStack {
             VStack {
-                List(viewModel.surahs){ surah in
-                    HStack{
-                        Text(surah.name.transliteration.en)
-                        Spacer()
-                        Text(surah.name.short)
+                List(viewModel.surahs, selection:$selected){ surah in
+                    Button{
+                        viewModel.loadAudio(of: String(surah.id))
+                    }label: {
+                        HStack{
+                            Text(surah.name.transliteration.en)
+                            Spacer()
+                            Text(surah.name.short)
+                            Image(systemName: K.audioStatusIcon.downloadingIcon)
+                                .foregroundStyle(Color(UIColor.tintColor))
+                        }
                     }
                 }
                 .listStyle(.plain)
@@ -27,7 +34,9 @@ struct HomeView: View {
                     .overlay {
                         HStack{
                             Button{
-                                
+                                if (selected != nil && selected != 1){
+                                    selected! -= 1
+                                }
                             }label: {
                                 Image(systemName: "chevron.left.to.line")
                                     .resizable()
@@ -38,9 +47,9 @@ struct HomeView: View {
                             Spacer()
                             
                             Button{
-                                viewModel.playing.toggle()
+                                viewModel.playPauseButtonPressed()
                             }label: {
-                                Image(systemName: viewModel.playing ? "play.circle" : "pause.circle")
+                                Image(systemName: /*viewModel.player.isPlaying ? "pause.circle" :*/ "play.circle")
                                     .resizable()
                                     .frame(width: 50, height: 50)
                                     .foregroundStyle(Color(UIColor.label))
@@ -49,7 +58,9 @@ struct HomeView: View {
                             Spacer()
                             
                             Button{
-                                
+                                if (selected != nil && selected != viewModel.surahs.count){
+                                    selected! += 1
+                                }
                             }label: {
                                 Image(systemName: "chevron.right.to.line")
                                     .resizable()

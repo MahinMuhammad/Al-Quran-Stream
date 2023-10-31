@@ -8,7 +8,7 @@
 import Foundation
 
 struct Result:Decodable{
-    let data:SurahModel
+    let data:[SurahModel]
 }
 
 struct SurahModel:Decodable, Identifiable{
@@ -18,7 +18,6 @@ struct SurahModel:Decodable, Identifiable{
     let number:Int
     let name:Name
     let numberOfVerses:Int
-    let verses:[Verse]
 }
 
 struct Name:Decodable{
@@ -28,12 +27,4 @@ struct Name:Decodable{
 
 struct Transliteration:Decodable{
     let en:String
-}
-
-struct Verse:Decodable{
-    let audio:Audio
-}
-
-struct Audio:Decodable{
-    let primary:String
 }
