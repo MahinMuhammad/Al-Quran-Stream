@@ -11,7 +11,7 @@ import SwiftUI
 struct Al_Quran_StreamApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }

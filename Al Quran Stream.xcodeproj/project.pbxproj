@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		0024A85C2AF013C500ED1F16 /* Al_Quran_StreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024A85B2AF013C500ED1F16 /* Al_Quran_StreamApp.swift */; };
-		0024A85E2AF013C500ED1F16 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024A85D2AF013C500ED1F16 /* ContentView.swift */; };
+		0024A85E2AF013C500ED1F16 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024A85D2AF013C500ED1F16 /* HomeView.swift */; };
 		0024A8602AF013C500ED1F16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0024A85F2AF013C500ED1F16 /* Assets.xcassets */; };
 		0024A8632AF013C500ED1F16 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0024A8622AF013C500ED1F16 /* Preview Assets.xcassets */; };
+		0024A86C2AF0233300ED1F16 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024A86B2AF0233300ED1F16 /* HomeViewModel.swift */; };
+		0024A86F2AF0239A00ED1F16 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024A86E2AF0239A00ED1F16 /* NetworkManager.swift */; };
+		0024A8712AF0278900ED1F16 /* SurahModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024A8702AF0278900ED1F16 /* SurahModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0024A8582AF013C400ED1F16 /* Al Quran Stream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Al Quran Stream.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0024A85B2AF013C500ED1F16 /* Al_Quran_StreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Al_Quran_StreamApp.swift; sourceTree = "<group>"; };
-		0024A85D2AF013C500ED1F16 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0024A85D2AF013C500ED1F16 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0024A85F2AF013C500ED1F16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0024A8622AF013C500ED1F16 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0024A86B2AF0233300ED1F16 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		0024A86E2AF0239A00ED1F16 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0024A8702AF0278900ED1F16 /* SurahModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurahModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +58,9 @@
 			isa = PBXGroup;
 			children = (
 				0024A85B2AF013C500ED1F16 /* Al_Quran_StreamApp.swift */,
-				0024A85D2AF013C500ED1F16 /* ContentView.swift */,
+				0024A86D2AF0233D00ED1F16 /* Model */,
+				0024A8692AF022F700ED1F16 /* View */,
+				0024A86A2AF0230400ED1F16 /* ViewModel */,
 				0024A85F2AF013C500ED1F16 /* Assets.xcassets */,
 				0024A8612AF013C500ED1F16 /* Preview Content */,
 			);
@@ -65,6 +73,31 @@
 				0024A8622AF013C500ED1F16 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0024A8692AF022F700ED1F16 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0024A85D2AF013C500ED1F16 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0024A86A2AF0230400ED1F16 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0024A86B2AF0233300ED1F16 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0024A86D2AF0233D00ED1F16 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0024A86E2AF0239A00ED1F16 /* NetworkManager.swift */,
+				0024A8702AF0278900ED1F16 /* SurahModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0024A85E2AF013C500ED1F16 /* ContentView.swift in Sources */,
+				0024A86F2AF0239A00ED1F16 /* NetworkManager.swift in Sources */,
+				0024A85E2AF013C500ED1F16 /* HomeView.swift in Sources */,
+				0024A8712AF0278900ED1F16 /* SurahModel.swift in Sources */,
+				0024A86C2AF0233300ED1F16 /* HomeViewModel.swift in Sources */,
 				0024A85C2AF013C500ED1F16 /* Al_Quran_StreamApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,7 +233,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -254,7 +290,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -280,6 +316,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +346,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
