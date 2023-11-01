@@ -8,12 +8,21 @@
 import Foundation
 import AVFoundation
 
+enum MasterButtonStatus{
+    case playPause
+    case reload
+}
+
 final class HomeViewModel:ObservableObject{
     let networkManager = NetworkManager()
-    let numberOfSurahToFetch = 10
     @Published var surahs:[SurahModel] = []
-    var player = AVPlayer()
+    
+    @Published var player:AVPlayer?
     @Published var playing = false
+    @Published var buttonStatus = MasterButtonStatus.playPause
+    
+    let finishPlayingNotification = NotificationCenter.default.publisher(for: AVPlayerItem.didPlayToEndTimeNotification)
+    
     
     func loadSurah(){
         networkManager.fetchData { surahs, error in
@@ -23,20 +32,32 @@ final class HomeViewModel:ObservableObject{
         }
     }
     
+    func replaySurah(){
+        player?.seek(to: .zero)
+        player?.play()
+        buttonStatus = .playPause
+    }
+    
     func playPauseButtonPressed(){
-        if player.timeControlStatus == .playing{
-            player.pause()
+        if let player{
+            if player.timeControlStatus == .playing{
+                player.pause()
+                playing = false
+            }else{
+                player.play()
+                playing = true
+            }
         }else{
-            player.play()
+            print("AVPlayer not loaded")
         }
     }
     
     func loadAudio(of number:String){
         if let url = URL(string: "https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/\(number).mp3"){
-            print("Fetching audio...")
-            player = AVPlayer(url: url)
-            print("Playing audio...")
-            player.play()
+            let item = AVPlayerItem(url: url)
+            player = AVPlayer(playerItem: item)
+            player?.play()
+            playing = true
         }
     }
 }

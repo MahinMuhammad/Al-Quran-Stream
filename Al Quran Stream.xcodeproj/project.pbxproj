@@ -14,7 +14,6 @@
 		0024A86C2AF0233300ED1F16 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024A86B2AF0233300ED1F16 /* HomeViewModel.swift */; };
 		0024A86F2AF0239A00ED1F16 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024A86E2AF0239A00ED1F16 /* NetworkManager.swift */; };
 		0024A8712AF0278900ED1F16 /* SurahModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024A8702AF0278900ED1F16 /* SurahModel.swift */; };
-		002F76202AF0F0A700EB4B72 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002F761F2AF0F0A700EB4B72 /* K.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +25,6 @@
 		0024A86B2AF0233300ED1F16 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		0024A86E2AF0239A00ED1F16 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0024A8702AF0278900ED1F16 /* SurahModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurahModel.swift; sourceTree = "<group>"; };
-		002F761F2AF0F0A700EB4B72 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				0024A85B2AF013C500ED1F16 /* Al_Quran_StreamApp.swift */,
-				002F761F2AF0F0A700EB4B72 /* K.swift */,
 				0024A86D2AF0233D00ED1F16 /* Model */,
 				0024A8692AF022F700ED1F16 /* View */,
 				0024A86A2AF0230400ED1F16 /* ViewModel */,
@@ -176,7 +173,6 @@
 				0024A86F2AF0239A00ED1F16 /* NetworkManager.swift in Sources */,
 				0024A85E2AF013C500ED1F16 /* HomeView.swift in Sources */,
 				0024A8712AF0278900ED1F16 /* SurahModel.swift in Sources */,
-				002F76202AF0F0A700EB4B72 /* K.swift in Sources */,
 				0024A86C2AF0233300ED1F16 /* HomeViewModel.swift in Sources */,
 				0024A85C2AF013C500ED1F16 /* Al_Quran_StreamApp.swift in Sources */,
 			);
