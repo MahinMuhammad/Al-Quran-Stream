@@ -22,6 +22,7 @@ final class HomeViewModel:ObservableObject{
     @Published var playing = false
     @Published var buttonStatus = MasterButtonStatus.playPause
     
+    let impactMed = UIImpactFeedbackGenerator(style: .soft)
     let finishPlayingNotification = NotificationCenter.default.publisher(for: AVPlayerItem.didPlayToEndTimeNotification)
     
     
@@ -34,6 +35,7 @@ final class HomeViewModel:ObservableObject{
     }
     
     func replaySurah(){
+        impactMed.impactOccurred()
         player?.seek(to: .zero)
         player?.play()
         playing = true
@@ -42,6 +44,7 @@ final class HomeViewModel:ObservableObject{
     
     func playPauseButtonPressed(){
         if let player{
+            impactMed.impactOccurred()
             if player.timeControlStatus == .playing{
                 player.pause()
                 playing = false
@@ -87,6 +90,7 @@ final class HomeViewModel:ObservableObject{
             withAnimation {
                 selectSurah(number)
             }
+            impactMed.impactOccurred()
             let item = AVPlayerItem(url: url)
             player = AVPlayer(playerItem: item)
             player?.play()
