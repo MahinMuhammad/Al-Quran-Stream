@@ -35,6 +35,7 @@ final class HomeViewModel:ObservableObject{
     func replaySurah(){
         player?.seek(to: .zero)
         player?.play()
+        playing = true
         buttonStatus = .playPause
     }
     
