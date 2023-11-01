@@ -15,10 +15,14 @@ struct HomeView: View {
             List(viewModel.surahs, selection:$selected){ surah in
                 HStack{
                     Text(surah.name.transliteration.en)
+                        .font(.title3)
+                        .fontWeight(.medium)
                     Spacer()
                     Text(surah.name.short)
                 }
+                .listRowBackground(Color.clear)
             }
+            .padding()
             .listStyle(.plain)
             .onChange(of: selected) { numberOfSurah in
                 if let numberOfSurah{
@@ -26,9 +30,9 @@ struct HomeView: View {
                 }
             }
             
-            RoundedRectangle(cornerRadius: 48)
-                .stroke(lineWidth: 1)
-                .frame(height: 100)
+            RoundedRectangle(cornerRadius: 50)
+                .foregroundStyle(Color(K.CustomColors.Pest))
+                .opacity(0.5)
                 .overlay {
                     HStack{
                         Button{
@@ -37,9 +41,10 @@ struct HomeView: View {
                                 selected! -= 1
                             }
                         }label: {
-                            Image(systemName: "chevron.left.to.line")
+                            Image("next")
                                 .resizable()
-                                .frame(width: 30, height: 40)
+                                .scaleEffect(x: -1, y: 1)
+                                .frame(width: 60, height: 60)
                                 .foregroundStyle(Color(UIColor.label))
                         }
                         
@@ -51,8 +56,9 @@ struct HomeView: View {
                             }label: {
                                 Image(systemName: viewModel.playing ? "pause.circle.fill" : "play.circle.fill")
                                     .resizable()
-                                    .frame(width: 80, height: 80)
+                                    .frame(width: 90, height: 90)
                                     .foregroundStyle(Color(UIColor.label))
+                                    
                             }
                         }else if viewModel.buttonStatus == .reload{
                             Button{
@@ -73,22 +79,30 @@ struct HomeView: View {
                                 selected! += 1
                             }
                         }label: {
-                            Image(systemName: "chevron.right.to.line")
+                            Image("next")
                                 .resizable()
-                                .frame(width: 30, height: 40)
+                                .frame(width: 60, height: 60)
                                 .foregroundStyle(Color(UIColor.label))
                         }
                     }
                     .padding(50)
                 }
+                .frame(height: 150)
+                .padding(.bottom, -35)
         }
-        .padding()
+        
         .onAppear{
             viewModel.loadSurah()
         }
         .onReceive(viewModel.finishPlayingNotification){ _ in
             viewModel.playing = false
             viewModel.buttonStatus = .reload
+        }
+        .background{
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
         }
     }
 }
