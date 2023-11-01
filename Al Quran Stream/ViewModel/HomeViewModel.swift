@@ -7,6 +7,7 @@
 
 import Foundation
 import AVFoundation
+import SwiftUI
 
 enum MasterButtonStatus{
     case playPause
@@ -53,8 +54,30 @@ final class HomeViewModel:ObservableObject{
         }
     }
     
-    func loadAudio(of number:String){
+    func selectSurah(_ number:Int){
+        for index in 0..<surahs.count{
+            if surahs[index].number == number{
+                surahs[index].playing = true
+            }else{
+                surahs[index].playing = false
+            }
+        }
+    }
+    
+    func getSelectedSurahNumber()->Int?{
+        for surah in surahs{
+            if surah.playing ?? false{
+                return surah.number
+            }
+        }
+        return nil
+    }
+    
+    func loadAudio(of number:Int){
         if let url = URL(string: "https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/\(number).mp3"){
+            withAnimation {
+                selectSurah(number)
+            }
             let item = AVPlayerItem(url: url)
             player = AVPlayer(playerItem: item)
             player?.play()

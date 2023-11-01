@@ -8,6 +8,7 @@
 import Foundation
 
 struct K{
+    static let NextIcon = "next"
     struct CustomColors{
         static let Pest = "Pest"
     }

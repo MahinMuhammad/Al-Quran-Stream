@@ -18,6 +18,7 @@ struct SurahModel:Decodable, Identifiable{
     let number:Int
     let name:Name
     let numberOfVerses:Int
+    var playing:Bool?
 }
 
 struct Name:Decodable{
