@@ -49,72 +49,79 @@ struct HomeView: View {
                     .foregroundStyle(Color(K.CustomColors.Pest))
                     .opacity(0.5)
                     .overlay {
-                        HStack{
-                            Button{
-                                if (selected != nil && selected != 1){
-                                    viewModel.buttonStatus = .playPause
-                                    selected! -= 1
-                                    withAnimation {
-                                        if let number = viewModel.getSelectedSurahNumber(){
-                                            scrollView.scrollTo(number-1)
-                                        }
-                                    }
-                                }
-                            }label: {
-                                Image(K.NextIcon)
-                                    .resizable()
-                                    .scaleEffect(x: -1, y: 1)
-                                    .frame(width: 30, height: 30)
-                                    .foregroundStyle(Color(UIColor.label))
-                            }
-                            
-                            Spacer()
-                            
-                            if viewModel.buttonStatus == .playPause{
+                        VStack {
+                            HStack{
                                 Button{
-                                    viewModel.playPauseButtonPressed()
-                                    withAnimation {
-                                        if let number = viewModel.getSelectedSurahNumber(){
-                                            scrollView.scrollTo(number)
+                                    if (selected != nil && selected != 1){
+                                        viewModel.buttonStatus = .playPause
+                                        selected! -= 1
+                                        withAnimation {
+                                            if let number = viewModel.getSelectedSurahNumber(){
+                                                scrollView.scrollTo(number-1)
+                                            }
                                         }
                                     }
                                 }label: {
-                                    Image(systemName: viewModel.playing ? "pause.circle.fill" : "play.circle.fill")
+                                    Image(K.NextIcon)
                                         .resizable()
-                                        .frame(width: 55, height: 55)
+                                        .scaleEffect(x: -1, y: 1)
+                                        .frame(width: 30, height: 30)
                                         .foregroundStyle(Color(UIColor.label))
                                 }
-                            }else if viewModel.buttonStatus == .reload{
-                                Button{
-                                    viewModel.replaySurah()
-                                }label: {
-                                    Image(systemName: "arrow.2.circlepath")
-                                        .resizable()
-                                        .frame(width: 65, height: 55)
-                                        .foregroundStyle(Color(UIColor.label))
-                                }
-                            }
-                            
-                            Spacer()
-                            
-                            Button{
-                                if (selected != nil && selected != viewModel.surahs.count){
-                                    viewModel.buttonStatus = .playPause
-                                    selected! += 1
-                                    withAnimation {
-                                        if let number = viewModel.getSelectedSurahNumber(){
-                                            scrollView.scrollTo(number+1)
+                                
+                                Spacer()
+                                
+                                if viewModel.buttonStatus == .playPause{
+                                    Button{
+                                        viewModel.playPauseButtonPressed()
+                                        withAnimation {
+                                            if let number = viewModel.getSelectedSurahNumber(){
+                                                scrollView.scrollTo(number)
+                                            }
                                         }
+                                    }label: {
+                                        Image(systemName: viewModel.playing ? "pause.circle.fill" : "play.circle.fill")
+                                            .resizable()
+                                            .frame(width: 55, height: 55)
+                                            .foregroundStyle(Color(UIColor.label))
+                                    }
+                                }else if viewModel.buttonStatus == .reload{
+                                    Button{
+                                        viewModel.replaySurah()
+                                    }label: {
+                                        Image(systemName: "arrow.2.circlepath")
+                                            .resizable()
+                                            .frame(width: 65, height: 55)
+                                            .foregroundStyle(Color(UIColor.label))
                                     }
                                 }
-                            }label: {
-                                Image(K.NextIcon)
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .foregroundStyle(Color(UIColor.label))
+                                
+                                Spacer()
+                                
+                                Button{
+                                    if (selected != nil && selected != viewModel.surahs.count){
+                                        viewModel.buttonStatus = .playPause
+                                        selected! += 1
+                                        withAnimation {
+                                            if let number = viewModel.getSelectedSurahNumber(){
+                                                scrollView.scrollTo(number+1)
+                                            }
+                                        }
+                                    }
+                                }label: {
+                                    Image(K.NextIcon)
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                        .foregroundStyle(Color(UIColor.label))
+                                }
                             }
+                            
+                            Text(viewModel.getSelectedSurahName() ?? "")
+                                .font(.callout)
+                                .padding(5)
                         }
                         .padding(70)
+                        .padding(.bottom,-20)
                     }
                     .frame(height: 150)
                     .padding(.bottom, -35)

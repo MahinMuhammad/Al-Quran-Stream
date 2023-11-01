@@ -73,6 +73,15 @@ final class HomeViewModel:ObservableObject{
         return nil
     }
     
+    func getSelectedSurahName()->String?{
+        for surah in surahs{
+            if surah.playing ?? false{
+                return "\(surah.name.transliteration.en) \(surah.name.short)"
+            }
+        }
+        return nil
+    }
+    
     func loadAudio(of number:Int){
         if let url = URL(string: "https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/\(number).mp3"){
             withAnimation {
