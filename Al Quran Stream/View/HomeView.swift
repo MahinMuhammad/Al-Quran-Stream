@@ -10,7 +10,10 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
     @State var selected:Int?
+    @State var degrees: Double = 0
     var body: some View {
+        let baseAnimation = Animation.easeInOut(duration: 1)
+        let repeated = baseAnimation.repeatForever(autoreverses: true)
         ScrollViewReader{ scrollView in
             VStack {
                 List(viewModel.surahs, selection:$selected){ surah in
@@ -19,6 +22,16 @@ struct HomeView: View {
                             .fontWeight(surah.playing ?? false ? .semibold : .medium)
                         Spacer()
                         Text(surah.name.short)
+                        if surah.playing ?? false{
+                            Image(systemName: "waveform")
+                                .foregroundStyle(.tint)
+                                .rotation3DEffect(.degrees(degrees), axis: (x: 1, y: 0, z: 0))
+                                .onAppear{
+                                    withAnimation(repeated) {
+                                        degrees = degrees == 0 ? 180 : 0
+                                    }
+                                }
+                        }
                     }
                     .font(.system(size: surah.playing ?? false ? 25 : 19))
                     .foregroundStyle(surah.playing ?? false ? Color(UIColor.systemBackground) : Color(UIColor.label))
@@ -119,7 +132,7 @@ struct HomeView: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
-        }
+            }
         }
     }
 }
