@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0015B3382AF385BB00949FC2 /* MonitoringNewtorkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015B3372AF385BB00949FC2 /* MonitoringNewtorkState.swift */; };
 		0024A85C2AF013C500ED1F16 /* Al_Quran_StreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024A85B2AF013C500ED1F16 /* Al_Quran_StreamApp.swift */; };
 		0024A85E2AF013C500ED1F16 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024A85D2AF013C500ED1F16 /* HomeView.swift */; };
 		0024A8602AF013C500ED1F16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0024A85F2AF013C500ED1F16 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0015B3372AF385BB00949FC2 /* MonitoringNewtorkState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringNewtorkState.swift; sourceTree = "<group>"; };
 		0024A8582AF013C400ED1F16 /* Al Quran Stream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Al Quran Stream.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0024A85B2AF013C500ED1F16 /* Al_Quran_StreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Al_Quran_StreamApp.swift; sourceTree = "<group>"; };
 		0024A85D2AF013C500ED1F16 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			children = (
 				0024A85B2AF013C500ED1F16 /* Al_Quran_StreamApp.swift */,
 				00904B832AF27C0A00D26164 /* K.swift */,
+				0015B3372AF385BB00949FC2 /* MonitoringNewtorkState.swift */,
 				0024A86D2AF0233D00ED1F16 /* Model */,
 				0024A8692AF022F700ED1F16 /* View */,
 				0024A86A2AF0230400ED1F16 /* ViewModel */,
@@ -179,6 +182,7 @@
 				00904B842AF27C0A00D26164 /* K.swift in Sources */,
 				0024A86C2AF0233300ED1F16 /* HomeViewModel.swift in Sources */,
 				0024A85C2AF013C500ED1F16 /* Al_Quran_StreamApp.swift in Sources */,
+				0015B3382AF385BB00949FC2 /* MonitoringNewtorkState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

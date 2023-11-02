@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
+    @StateObject var networkState = MonitoringNetworkState()
     @State var selected:Int?
     @State var degrees: Double = 0
     var body: some View {
@@ -79,14 +80,16 @@ struct HomeView: View {
                                             }
                                         }
                                     }label: {
-                                        Image(systemName: viewModel.playing ? "pause.circle.fill" : "play.circle.fill")
+                                        Image(systemName: viewModel.isPlaying ? "pause.circle.fill" : "play.circle.fill")
                                             .resizable()
                                             .frame(width: 55, height: 55)
                                             .foregroundStyle(Color(UIColor.label))
                                     }
                                 }else if viewModel.buttonStatus == .reload{
                                     Button{
-                                        viewModel.replaySurah()
+                                        withAnimation {
+                                            viewModel.replaySurah()
+                                        }
                                     }label: {
                                         Image(systemName: "arrow.2.circlepath")
                                             .resizable()
@@ -124,19 +127,32 @@ struct HomeView: View {
                     .frame(height: 150)
                     .padding(.bottom, -35)
             }
-            
-            .onAppear{
-                viewModel.loadSurah()
-            }
             .onReceive(viewModel.finishPlayingNotification){ _ in
-                viewModel.playing = false
-                viewModel.buttonStatus = .reload
+                withAnimation {
+                    viewModel.buttonStatus = .reload
+                }
+            }
+            .onReceive(viewModel.playPauseNotification){ _ in
+                if viewModel.player?.rate == 1.0{
+                    viewModel.isPlaying = true
+                }else if viewModel.player?.rate == 0.0{
+                    viewModel.isPlaying = false
+                }
             }
             .background{
                 Image("background")
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
+            }
+            .onAppear{
+                viewModel.loadSurah()
+            }
+            //fatching data after being online
+            .onChange(of: networkState.isConnected) { connected in
+                if connected{
+                    viewModel.loadSurah()
+                }
             }
         }
     }
