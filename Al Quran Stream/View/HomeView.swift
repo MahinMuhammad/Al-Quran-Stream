@@ -53,7 +53,6 @@ struct HomeView: View {
                             HStack{
                                 Button{
                                     if (selected != nil && selected != 1){
-                                        viewModel.buttonStatus = .playPause
                                         selected! -= 1
                                         withAnimation {
                                             if let number = viewModel.getSelectedSurahNumber(){
@@ -100,7 +99,6 @@ struct HomeView: View {
                                 
                                 Button{
                                     if (selected != nil && selected != viewModel.surahs.count){
-                                        viewModel.buttonStatus = .playPause
                                         selected! += 1
                                         withAnimation {
                                             if let number = viewModel.getSelectedSurahNumber(){

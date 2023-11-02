@@ -94,6 +94,7 @@ final class HomeViewModel:ObservableObject{
             let item = AVPlayerItem(url: url)
             player = AVPlayer(playerItem: item)
             player?.play()
+            buttonStatus = .playPause
             playing = true
         }
     }
